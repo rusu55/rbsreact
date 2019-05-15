@@ -1,7 +1,9 @@
 import React, { Fragment} from 'react'
 import Joi from 'joi-browser'
+import { connect } from 'react-redux'
+import { setAlert} from '../../actions/alert'
 
-import Form from './commons/form'
+import Form from '../commons/form'
 
 class UserLogin extends Form{
     state ={
@@ -21,7 +23,7 @@ class UserLogin extends Form{
           .label("Password")
       };
    doSubmit = () =>{
-       console.log('Submited')
+       this.props.setAlert('First Alert', 'danger')
    }  
 
     render(){
@@ -37,4 +39,4 @@ class UserLogin extends Form{
     }
 }
 
-export default UserLogin
+export default connect(null, { setAlert })(UserLogin)
