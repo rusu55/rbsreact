@@ -1,6 +1,7 @@
 import React, { Fragment} from 'react'
 import Joi from 'joi-browser'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { setAlert} from '../../actions/alert'
 
 import Form from '../commons/form'
@@ -22,6 +23,8 @@ class UserLogin extends Form{
           .required()
           .label("Password")
       };
+
+
    doSubmit = () =>{
        this.props.setAlert('First Alert', 'danger')
    }  
@@ -37,6 +40,10 @@ class UserLogin extends Form{
             </Fragment>
         )
     }
+}
+
+UserLogin.propTypes = {
+    setAlert: PropTypes.func.isRequired
 }
 
 export default connect(null, { setAlert })(UserLogin)
