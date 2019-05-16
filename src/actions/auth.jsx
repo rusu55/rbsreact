@@ -1,22 +1,18 @@
 import axios from 'axios'
+import http from '../services/httpService'
+import { apiUrl } from '../config.json'
 import { setAlert } from './alert'
 import { LOGIN_SUCCESS, LOGIN_FAIL } from './types'
 
 //Login User
 export const login = ({email, password}) => async dispatch =>{
-   const config = {
-       headers: {
-           'Content-Type': 'application/json'
-       }
-   }
-   const body = JSON.stringify({ email, password})
-   
+    const apiEndPoint = apiUrl + "auth"  
    try{
-        const res = await axios.post('http://localhost:3000/api/auth', body, config)
-        console.log(res)
+        const response = await http.post(apiEndPoint, {email, password})
+       // console.log(response)
         dispatch({
             type: LOGIN_SUCCESS,
-            payload: res.data
+            payload: response.data
         })
    }
    catch(err){
