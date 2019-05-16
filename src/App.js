@@ -11,7 +11,8 @@ import './App.css';
 import NavBar from './components/NavBar'
 import UserLogin from './components/auth/UserLogin'
 import Home from './components/layout/Home'
-import Alert from './components/layout/alert'
+import Alert from './components/commons/alert'
+import UserRegister from './components/auth/UserRegister'
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
               <Alert />           
               <Switch>
                 <Route path="/login" component={UserLogin} />
-                <Route  path="/" exact component={Home} />
+                <Route path="/register" component={UserRegister} />
+                <Route  path="/" component={Home} />
               </Switch>
           </main> 
       </Fragment>
