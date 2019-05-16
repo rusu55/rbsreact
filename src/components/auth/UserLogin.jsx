@@ -3,6 +3,7 @@ import Joi from 'joi-browser'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { setAlert} from '../../actions/alert'
+import { login } from '../../actions/auth'
 
 import Form from '../commons/form'
 
@@ -26,7 +27,8 @@ class UserLogin extends Form{
 
 
    doSubmit = () =>{
-       this.props.setAlert('First Alert', 'danger')
+       const { email, password } = this.state.data
+       this.props.login({ email, password})
    }  
 
     render(){
@@ -43,7 +45,8 @@ class UserLogin extends Form{
 }
 
 UserLogin.propTypes = {
-    setAlert: PropTypes.func.isRequired
+    setAlert: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired
 }
 
-export default connect(null, { setAlert })(UserLogin)
+export default connect(null, { setAlert , login})(UserLogin)

@@ -11,6 +11,7 @@ import './App.css';
 import NavBar from './components/NavBar'
 import UserLogin from './components/auth/UserLogin'
 import Home from './components/layout/Home'
+import Alert from './components/layout/alert'
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       <BrowserRouter>
         <Fragment>
           <NavBar />
-            <main  className="container">            
+            <main  className="container"> 
+              <Alert />           
               <Switch>
                 <Route path="/login" component={UserLogin} />
                 <Route  path="/" exact component={Home} />
