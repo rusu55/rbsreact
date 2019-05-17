@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import Joi from 'joi-browser'
 import PropTypes from 'prop-types'
 import Form from '../commons/form'
@@ -32,6 +33,9 @@ class RegisterUser extends Form{
     }
 
     render(){
+        if(this.props.isAuthenticated){
+            return <Redirect to='/' />
+        }
         return(
            <Fragment>
                <h3>User Registration:</h3>
@@ -52,4 +56,7 @@ RegisterUser.propTypes = {
     registerUser: PropTypes.func.isRequired
 }
 
-export default connect(null, {setAlert, registerUser})(RegisterUser)
+const mapStateToProps = state =>({
+    isAuthenticated : state.auth.token
+})
+export default connect(mapStateToProps, {setAlert, registerUser})(RegisterUser)

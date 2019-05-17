@@ -1,4 +1,5 @@
 import React, { Fragment} from 'react'
+import { Redirect } from 'react-router-dom'
 import Joi from 'joi-browser'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -6,6 +7,7 @@ import { setAlert} from '../../actions/alert'
 import { login } from '../../actions/auth'
 
 import Form from '../commons/form'
+
 
 class UserLogin extends Form{
     state ={
@@ -32,6 +34,9 @@ class UserLogin extends Form{
    }  
 
     render(){
+        if(this.props.isAuthenticated){
+            return <Redirect to='/' />
+        }
         return(
             <Fragment>
                  <form onSubmit={this.handleSubmit}>
@@ -44,9 +49,14 @@ class UserLogin extends Form{
     }
 }
 
+const mapStateToProps = state =>({
+    isAuthenticated: state.auth.token
+})
+
 UserLogin.propTypes = {
     setAlert: PropTypes.func.isRequired,
-    login: PropTypes.func.isRequired
+    login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
 }
 
-export default connect(null, { setAlert , login})(UserLogin)
+export default connect(mapStateToProps, { setAlert , login})(UserLogin)
