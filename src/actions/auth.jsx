@@ -14,7 +14,7 @@ export const login = ({email, password}) => async dispatch =>{
     const apiEndPoint = apiUrl + "auth"  
    try{
         const response = await http.post(apiEndPoint, {email, password})
-       //console.log(response)
+       console.log(response)
         dispatch({
             type: LOGIN_SUCCESS,
             payload: response.data
@@ -26,10 +26,10 @@ export const login = ({email, password}) => async dispatch =>{
         if(errors) {
             //errors.forEach(error => dispatch(setAlert(error.data, 'danger')))
             dispatch(setAlert(errors, 'danger'))
-        }
-        dispatch({
-            type: LOGIN_FAIL
-        })
+            dispatch({
+                type: LOGIN_FAIL
+            })
+        }       
    }
 }
 

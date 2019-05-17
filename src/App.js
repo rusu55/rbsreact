@@ -13,7 +13,8 @@ import UserLogin from './components/auth/UserLogin'
 import Home from './components/layout/Home'
 import Alert from './components/commons/alert'
 import UserRegister from './components/auth/UserRegister'
-import Dashboard from './components/layout/Dashboard'
+import Dashboard from './components/layout//dashboard/Dashboard'
+import CreateProfile from './components/layout/dashboard/CreateProfile'
 import PrivateRoute from './components/commons/privateRoute'
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/login" component={UserLogin} />
                 <Route path="/register" component={UserRegister} />               
                 <PrivateRoute path="/dashboard" component={Dashboard} />
+                <PrivateRoute path="/createProfile" component={CreateProfile} />
                 <Route  path="/" component={Home} />
               </Switch>
           </main> 
