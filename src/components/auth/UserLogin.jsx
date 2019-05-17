@@ -35,7 +35,7 @@ class UserLogin extends Form{
 
     render(){
         if(this.props.isAuthenticated){
-            return <Redirect to='/' />
+            return <Redirect to='/dashboard' />
         }
         return(
             <Fragment>

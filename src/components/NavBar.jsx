@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { logout } from '../actions/auth'
 
 const NavBar = ({ auth: {isAuthenticated, loading}, logout}) =>{
-
+     console.log(loading)
     const authLinks = (
       <NavLink onClick={logout} className="nav-item nav-link" to="/">
       Logout
@@ -44,9 +44,7 @@ const NavBar = ({ auth: {isAuthenticated, loading}, logout}) =>{
           </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
-          { !loading && (<Fragment>
-            { isAuthenticated ? authLinks : guestLinks }
-          </Fragment>) }
+          { isAuthenticated ? authLinks : guestLinks}          
         </div>
       </div>
     </nav>
