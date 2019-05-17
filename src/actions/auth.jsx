@@ -2,7 +2,12 @@
 import http from '../services/httpService'
 import { apiUrl } from '../config.json'
 import { setAlert } from './alert'
-import { LOGIN_SUCCESS, LOGIN_FAIL, REGISTER_SUCCESS, REGISTER_FAIL } from './types'
+import { LOGIN_SUCCESS, 
+        LOGIN_FAIL, 
+        REGISTER_SUCCESS, 
+        REGISTER_FAIL,
+        LOGOUT
+    } from './types'
 
 //Login User
 export const login = ({email, password}) => async dispatch =>{
@@ -50,4 +55,12 @@ export const registerUser = ({ name, email, password}) => async dispatch =>{
             type: REGISTER_FAIL
         })
     }
+}
+
+//logout 
+
+export const logout = () => dispatch =>{
+    dispatch({
+        type: LOGOUT
+    })
 }
