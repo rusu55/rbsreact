@@ -15,8 +15,12 @@ const Dashboard = ({ getCurrentProfile, auth, userProfile }) =>{
     return (
         <Fragment>
              <h1>Dashboard</h1>
-             <p>Welcome User </p>
-             <Link to='/createProfile' className="btn btn-primary my-1">Create Profile</Link>
+             <p>Welcome User : {auth.user && auth.user.name }</p>
+          { userProfile !== null ?  <Fragment>{userProfile.profile }</Fragment>  : <Fragment>
+          <Link to='/createProfile' className="btn btn-primary my-1">Create Profile</Link>
+          </Fragment> }
+             
+             
         </Fragment>
     )
     

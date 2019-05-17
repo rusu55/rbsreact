@@ -6,7 +6,8 @@ import { LOGIN_SUCCESS,
         LOGIN_FAIL, 
         REGISTER_SUCCESS, 
         REGISTER_FAIL,
-        LOGOUT
+        LOGOUT, 
+        CLEAR_PROFILE
     } from './types'
 
 //Login User
@@ -60,7 +61,6 @@ export const registerUser = ({ name, email, password}) => async dispatch =>{
 //logout 
 
 export const logout = () => dispatch =>{
-    dispatch({
-        type: LOGOUT
-    })
+    dispatch({ type: CLEAR_PROFILE })
+    dispatch({ type: LOGOUT })
 }
