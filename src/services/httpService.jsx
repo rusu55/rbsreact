@@ -15,8 +15,15 @@ axios.interceptors.response.use(null, error =>{
   return Promise.reject(error)
 })
 
-function setJwt(jwt){
-    axios.defaults.headers.common["x-auth-token"] = jwt
+export function setHeaderJWT(jwt){
+  console.log("Intra")
+  if(jwt) {
+    return axios.defaults.headers.common["x-auth-token"] = jwt
+  }
+  else {
+    return null
+  }
+    
 }
 
 export default {
@@ -24,5 +31,5 @@ export default {
     post: axios.post,
     put: axios.put,
     delete: axios.delete,
-    setJwt
+    setHeaderJWT
 }
