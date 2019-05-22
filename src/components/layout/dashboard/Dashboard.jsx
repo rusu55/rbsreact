@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 
 import { getCurrentProfile } from '../../../actions/userProfile'
 
-const Dashboard = ({ getCurrentProfile, auth, userProfile }) =>{
-
+const Dashboard = ({ getCurrentProfile, auth, userProfile :{profile, loading} }) =>{
+    
     useEffect(()=>{
         getCurrentProfile()
     }, [])
@@ -16,10 +16,10 @@ const Dashboard = ({ getCurrentProfile, auth, userProfile }) =>{
         <Fragment>
              <h1>Dashboard</h1>
              <p>Welcome User : {auth.user && auth.user.name }</p>
-          { userProfile !== null ?  <Fragment>{userProfile.profile }</Fragment>  : <Fragment>
+             { profile !== null ?  <Fragment>{profile.company}</Fragment>  : <Fragment>
           <Link to='/createProfile' className="btn btn-primary my-1">Create Profile</Link>
           </Fragment> }
-             
+            
              
         </Fragment>
     )

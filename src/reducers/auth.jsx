@@ -4,6 +4,7 @@ import { LOGIN_SUCCESS,
      REGISTER_FAIL,
      LOGOUT
     } from '../actions/types'
+    import { setHeaderJWT } from '../services/httpService'
 
 const initialState = {
     token: localStorage.getItem('token'),
@@ -18,6 +19,7 @@ export default function(state = initialState, action){
             case  LOGIN_SUCCESS:
             case  REGISTER_SUCCESS:
                 localStorage.setItem('token', payload.token)
+                setHeaderJWT(localStorage.token)
                 return {
                      ...state, 
                      token: payload.token,                   

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { logout } from '../actions/auth'
 
 const NavBar = ({ auth: {isAuthenticated, loading}, logout}) =>{
-     console.log(loading)
+    // / console.log(loading)
     const authLinks = (
       <NavLink onClick={logout} className="nav-item nav-link" to="/">
       Logout

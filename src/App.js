@@ -1,5 +1,8 @@
 import React, {Fragment} from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 //Redux
 import { Provider } from 'react-redux'
@@ -22,6 +25,7 @@ function App() {
     <Provider store = {store}>
       <BrowserRouter>
         <Fragment>
+        <ToastContainer />
           <NavBar />
             <main  className="container"> 
               <Alert />           
