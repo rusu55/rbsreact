@@ -6,6 +6,7 @@ import {
 
 import { apiUrl } from '../config.json'
 import http from '../services/httpService'
+import { setAlert } from './alert'
 
 export const getUserProfile = () => async dispatch => {
     const apiEndPoint = apiUrl + "profile/me"
