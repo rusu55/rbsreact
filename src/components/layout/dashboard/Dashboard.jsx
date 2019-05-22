@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { getUserProfile } from '../../../actions/userProfile'
+import Spinner from '../../commons/spinner'
 
 const Dashboard = ({ getUserProfile, auth, userProfile :{profile, loading} }) =>{
     
@@ -16,11 +17,16 @@ const Dashboard = ({ getUserProfile, auth, userProfile :{profile, loading} }) =>
         <Fragment>
              <h1>Dashboard</h1>
              <p>Welcome User : {auth.user && auth.user.name }</p>
-             { profile !== null ?  <Fragment>{profile.company}</Fragment>  : <Fragment>
-          <Link to='/createProfile' className="btn btn-primary my-1">Create Profile</Link>
-          </Fragment> }
+             {loading ? <Spinner/> : ""}
+             { profile !== null ?  
+                <Fragment>
+                    {profile.company}
+                    <Link to='/editProfile' className="btn btn-primary my-1">Edit Profile</Link>
+                </Fragment>  : 
+                <Fragment>
+                    <Link to='/createProfile' className="btn btn-primary my-1">Create Profile</Link>
+                </Fragment> }
             
-             
         </Fragment>
     )
     

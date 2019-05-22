@@ -18,6 +18,7 @@ import Alert from './components/commons/alert'
 import UserRegister from './components/auth/UserRegister'
 import Dashboard from './components/layout//dashboard/Dashboard'
 import CreateProfile from './components/layout/dashboard/CreateProfile'
+import EditProfile from './components/layout/dashboard/EditProfile'
 import PrivateRoute from './components/commons/privateRoute'
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/register" component={UserRegister} />               
                 <PrivateRoute path="/dashboard" component={Dashboard} />
                 <PrivateRoute path="/createProfile" component={CreateProfile} />
+                <PrivateRoute path="/editProfile" component={EditProfile} />                
                 <Route  path="/" component={Home} />
               </Switch>
           </main> 

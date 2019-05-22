@@ -13,7 +13,7 @@ export const getUserProfile = () => async dispatch => {
     
     
     try{
-     
+      
        const response = await http.get(apiEndPoint)
         dispatch({
             type: GET_PROFILE,
@@ -30,7 +30,7 @@ export const getUserProfile = () => async dispatch => {
 }
 
 // Create New Profile
-export const createNewProfile = (formData) => async dispatch =>{
+export const createNewProfile = (formData, history) => async dispatch =>{
     const apiEndPoint = apiUrl + "profile/me"
     try{
         const response = await http.post(apiEndPoint, formData)
@@ -39,6 +39,27 @@ export const createNewProfile = (formData) => async dispatch =>{
            payload: formData
         })
         dispatch(setAlert("Profile Created!"))
+        history.push('/dashboard')
+    } catch(ex){
+       dispatch({
+           type: PROFILE_ERROR,
+           payload: ex.response.data
+       })
+    }
+   
+}
+
+// Edit User Profile
+export const editUserProfile = (formData, history) => async dispatch =>{
+    const apiEndPoint = apiUrl + "profile/me"
+    try{
+        const response = await http.put(apiEndPoint, formData)
+        dispatch({
+           type: CREATE_PROFILE,
+           payload: formData
+        })
+        dispatch(setAlert("Profile Updated!"))
+        history.push('/dashboard')
     } catch(ex){
        dispatch({
            type: PROFILE_ERROR,
