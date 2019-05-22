@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { getCurrentProfile } from '../../../actions/userProfile'
+import { getUserProfile } from '../../../actions/userProfile'
 
-const Dashboard = ({ getCurrentProfile, auth, userProfile :{profile, loading} }) =>{
+const Dashboard = ({ getUserProfile, auth, userProfile :{profile, loading} }) =>{
     
     useEffect(()=>{
-        getCurrentProfile()
+        getUserProfile()
     }, [])
 
     
@@ -27,7 +27,7 @@ const Dashboard = ({ getCurrentProfile, auth, userProfile :{profile, loading} })
 }
 
 Dashboard.propTypes ={
- getCurrentProfile: PropTypes.func.isRequired,
+ getUserProfile: PropTypes.func.isRequired,
  auth: PropTypes.object.isRequired,
  userProfile: PropTypes.object.isRequired
 }
@@ -36,4 +36,4 @@ const mapStateToProps = state =>({
     auth: state.auth,
     userProfile: state.userProfile
 })
-export default connect(mapStateToProps, {getCurrentProfile})(Dashboard)
+export default connect(mapStateToProps, {getUserProfile})(Dashboard)

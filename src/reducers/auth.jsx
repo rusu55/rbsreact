@@ -4,7 +4,11 @@ import { LOGIN_SUCCESS,
      REGISTER_FAIL,
      LOGOUT
     } from '../actions/types'
+<<<<<<< HEAD
     import { setHeaderJWT } from '../services/httpService'
+=======
+import { setHeaderJWT } from '../services/httpService'
+>>>>>>> d7eaa5c52cd4ac58d9d8a876cee3d25c94df23a1
 
 const initialState = {
     token: localStorage.getItem('token'),

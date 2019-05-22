@@ -16,7 +16,7 @@ axios.interceptors.response.use(null, error =>{
 })
 
 export function setHeaderJWT(jwt){
- 
+  
   if(jwt) {
     return axios.defaults.headers.common["x-auth-token"] = jwt
   }
