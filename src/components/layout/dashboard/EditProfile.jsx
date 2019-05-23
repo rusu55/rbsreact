@@ -4,6 +4,7 @@ import Joi from 'joi-browser'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 
 import { editUserProfile, getUserProfile } from '../../../actions/userProfile'
 
@@ -29,15 +30,27 @@ class EditProfile extends Form{
        instagram: Joi.string().required()
     }
     
-    componentDidMount(){
+    populateForm(){
         const { profile, loading } = this.props.userProfile
-        console.log(profile)
-        const data = profile
-        this.setState({data})
+        this.setState({ data: this.mapToViewModel(profile) })
+    }
+
+    mapToViewModel(profile){
+        return {
+            company: profile.company,
+            website: profile.website,
+            phone: profile.phone,
+            facebook: profile.social.facebook,
+            youtube: profile.social.youtube,
+           instagram: profile.social.instagram,
+        }
+    }
+    componentDidMount(){
+        this.populateForm()
     }
     doSubmit = () =>{
-       // console.log(this.state.data)
-        this.props.editUserProfile(this.state.data, this.props.history)
+        
+        this.props.editUserProfile(this.state.data, this.props.userProfile.profile._id, this.props.history)
     }
     
     render(){

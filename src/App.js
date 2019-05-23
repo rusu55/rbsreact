@@ -35,7 +35,7 @@ function App() {
                 <Route path="/register" component={UserRegister} />               
                 <PrivateRoute path="/dashboard" component={Dashboard} />
                 <PrivateRoute path="/createProfile" component={CreateProfile} />
-                <PrivateRoute path="/editProfile" component={EditProfile} />                
+                <PrivateRoute path="/editProfile/:id" component={EditProfile} />                
                 <Route  path="/" component={Home} />
               </Switch>
           </main> 

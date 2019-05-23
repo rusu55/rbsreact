@@ -21,7 +21,7 @@ const Dashboard = ({ getUserProfile, auth, userProfile :{profile, loading} }) =>
              { profile !== null ?  
                 <Fragment>
                     {profile.company}
-                    <Link to='/editProfile' className="btn btn-primary my-1">Edit Profile</Link>
+                    <Link to={`/editProfile/${profile._id}`} className="btn btn-primary my-1">Edit Profile</Link>
                 </Fragment>  : 
                 <Fragment>
                     <Link to='/createProfile' className="btn btn-primary my-1">Create Profile</Link>

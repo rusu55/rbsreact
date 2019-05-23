@@ -50,8 +50,10 @@ export const createNewProfile = (formData, history) => async dispatch =>{
 }
 
 // Edit User Profile
-export const editUserProfile = (formData, history) => async dispatch =>{
-    const apiEndPoint = apiUrl + "profile/me"
+export const editUserProfile = (formData, id,  history) => async dispatch =>{
+
+    const apiEndPoint = apiUrl + `profile/${id}`
+    console.log(apiEndPoint)
     try{
         const response = await http.put(apiEndPoint, formData)
         dispatch({
