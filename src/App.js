@@ -20,6 +20,7 @@ import Dashboard from './components/layout//dashboard/Dashboard'
 import CreateProfile from './components/layout/dashboard/CreateProfile'
 import EditProfile from './components/layout/dashboard/EditProfile'
 import PrivateRoute from './components/commons/privateRoute'
+import CreateLead from './components/layout/leads/CreateLead';
 
 function App() {
   return (
@@ -35,7 +36,8 @@ function App() {
                 <Route path="/register" component={UserRegister} />               
                 <PrivateRoute path="/dashboard" component={Dashboard} />
                 <PrivateRoute path="/createProfile" component={CreateProfile} />
-                <PrivateRoute path="/editProfile/:id" component={EditProfile} />                
+                <PrivateRoute path="/editProfile/:id" component={EditProfile} />     
+                <PrivateRoute path="/leadForm" component={CreateLead} />           
                 <Route  path="/" component={Home} />
               </Switch>
           </main> 

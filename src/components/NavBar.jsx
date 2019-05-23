@@ -7,9 +7,12 @@ import { logout } from '../actions/auth'
 const NavBar = ({ auth: {isAuthenticated, loading}, logout}) =>{
     // / console.log(loading)
     const authLinks = (
-      <NavLink onClick={logout} className="nav-item nav-link" to="/">
-      Logout
-    </NavLink>
+      <Fragment>
+           <NavLink onClick={logout} className="nav-item nav-link" to="/">      
+               Logout
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/leadForm" >Add Lead</NavLink>
+      </Fragment>     
     )
     const guestLinks = (
       <Fragment>
