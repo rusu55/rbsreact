@@ -1,4 +1,5 @@
 import React, { Fragment} from 'react'
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Joi from 'joi-browser'
 
@@ -26,7 +27,7 @@ class CreateLead extends Form{
 
      doSubmit = () =>{
         console.log("Form Submited!")
-        this.props.createNewLead()
+        this.props.createNewLead(this.state.data, this.props.history)
         console.log("Back!")
     }
     render(){
@@ -46,8 +47,8 @@ class CreateLead extends Form{
 }
 
 CreateLead.propTypes ={
-
+    createNewLead: PropTypes.func.isRequired
 }
 
-export default connect(null, { createNewLead })(CreateLead)
+export default connect(null, { createNewLead })(withRouter(CreateLead))
 

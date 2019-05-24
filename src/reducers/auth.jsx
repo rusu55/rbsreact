@@ -15,6 +15,7 @@ const initialState = {
 
 export default function(state = initialState, action){
     const { type, payload } = action
+    console.log("Auth Reducer!")
     switch(type){
             case  LOGIN_SUCCESS:
             case  REGISTER_SUCCESS:
