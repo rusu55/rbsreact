@@ -1,4 +1,4 @@
-import { CREATE_LEAD } from '../actions/types'
+import { CREATE_LEAD, LEAD_ERROR } from '../actions/types'
 
 const initialState = {
     profile: null,
@@ -12,11 +12,17 @@ export default function(state = initialState, action){
     switch(type) {
         case CREATE_LEAD : 
             return {
-                ...state
+                ...state,
+                profile: payload,
+                loading: false,
+                error : null,
             }
-            
-                
-
+         case   LEAD_ERROR :
+             return {
+                ...state,
+                loading: false,
+                error: payload
+             }  
         default : 
             return state
     }

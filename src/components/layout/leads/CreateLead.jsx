@@ -1,6 +1,7 @@
 import React, { Fragment} from 'react'
 import PropTypes from 'prop-types'
 import Joi from 'joi-browser'
+import { withRouter } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { createNewLead } from '../../../actions/leads'
@@ -11,7 +12,7 @@ import Form from '../../commons/form'
 class CreateLead extends Form{
      state ={
         data: {
-            name: "", email: "", phone: "", date: ""
+            name: "", email: "", phone: "", weddingDate: ""
         },
         errors:{}
     }
@@ -20,15 +21,14 @@ class CreateLead extends Form{
         name: Joi.string().required().min(4).max(50).label("Name"),
         email: Joi.string().required().min(6).max(50).email().label("Email Address"),
         phone: Joi.string().allow(''),
-        date: Joi.date().allow('')
+        weddingDate: Joi.date().allow('')
        
     }
 
-     doSubmit = () =>{
-        console.log("Form Submited!")
-        this.props.createNewLead()
-        console.log("Back!")
+     doSubmit = () =>{     
+        this.props.createNewLead( this.state.data, this.props.history)        
     }
+
     render(){
         return(
             <Fragment>
@@ -37,7 +37,7 @@ class CreateLead extends Form{
                     {this.renderInput("name" , "Name") }
                     {this.renderInput("email" , "Email Address") }
                     {this.renderInput("phone" , "Phone Number") }
-                    {this.renderInput("date" , "Wedding Date", "date") }
+                    {this.renderInput("weddingDate" , "Wedding Date", "date") }
                     {this.renderButton("Add New Lead")}
                 </form>
             </Fragment>
@@ -46,8 +46,8 @@ class CreateLead extends Form{
 }
 
 CreateLead.propTypes ={
-
+    createNewLead : PropTypes.func.isRequired
 }
 
-export default connect(null, { createNewLead })(CreateLead)
+export default connect(null, { createNewLead })(withRouter(CreateLead))
 

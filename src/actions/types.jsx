@@ -10,3 +10,5 @@ export const PROFILE_ERROR = 'PROFILE_ERROR'
 export const CLEAR_PROFILE = 'CLEAR_PROFILE'
 export const CREATE_PROFILE = 'CREATE_PROFILE'
 export const CREATE_LEAD = 'CREATE_LEAD'
+export const LEAD_ERROR = 'LEAD_ERROR'
+
