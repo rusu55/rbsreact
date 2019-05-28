@@ -11,4 +11,7 @@ export const CLEAR_PROFILE = 'CLEAR_PROFILE'
 export const CREATE_PROFILE = 'CREATE_PROFILE'
 export const CREATE_LEAD = 'CREATE_LEAD'
 export const LEAD_ERROR = 'LEAD_ERROR'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2fc5a14dec2f0cb06259dc016f46386193d4e34a

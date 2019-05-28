@@ -11,7 +11,7 @@ const NavBar = ({ auth: {isAuthenticated, loading}, logout}) =>{
            <NavLink onClick={logout} className="nav-item nav-link" to="/">      
                Logout
           </NavLink>
-          <NavLink className="nav-item nav-link" to="/leadForm" >Add Lead</NavLink>
+          <NavLink className="nav-item nav-link" to="/leads" >Leads</NavLink>
       </Fragment>     
     )
     const guestLinks = (

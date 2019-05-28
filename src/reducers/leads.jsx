@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 import { CREATE_LEAD, LEAD_ERROR } from '../actions/types'
+=======
+import { CREATE_LEAD , LEAD_ERROR} from '../actions/types'
+>>>>>>> 2fc5a14dec2f0cb06259dc016f46386193d4e34a
 
 const initialState = {
-    profile: null,
+   lead: null,
     loading: true,
-    error: {}
+
 }
 
 export default function(state = initialState, action){
