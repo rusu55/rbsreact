@@ -1,3 +1,4 @@
+
 import { CREATE_LEAD , LEAD_ERROR, GET_LEADS, GET_LEAD_PROFILE} from '../actions/types'
 
 const initialState = {
@@ -12,12 +13,12 @@ export default function(state = initialState, action){
         case CREATE_LEAD : 
             return {
                 ...state,
-                lead: payload,
+                profile: payload,
                 loading: false,
-                error: null
+                error : null,
             }
-        case LEAD_ERROR:
-            return {
+         case   LEAD_ERROR :
+             return {
                 ...state,
                 loading: false,
             }   

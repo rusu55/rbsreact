@@ -2,6 +2,7 @@ import React, { Fragment} from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Joi from 'joi-browser'
+import { withRouter } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { createNewLead } from '../../../actions/leads'
@@ -25,11 +26,10 @@ class CreateLead extends Form{
        
     }
 
-     doSubmit = () =>{
-        console.log("Form Submited!")
-        this.props.createNewLead(this.state.data, this.props.history)
-        console.log("Back!")
+     doSubmit = () =>{     
+        this.props.createNewLead( this.state.data, this.props.history)        
     }
+
     render(){
         return(
             <Fragment>
@@ -47,7 +47,7 @@ class CreateLead extends Form{
 }
 
 CreateLead.propTypes ={
-    createNewLead: PropTypes.func.isRequired
+    createNewLead : PropTypes.func.isRequired
 }
 
 export default connect(null, { createNewLead })(withRouter(CreateLead))
