@@ -8,10 +8,9 @@ const NavBar = ({ auth: {isAuthenticated, loading}, logout}) =>{
     // / console.log(loading)
     const authLinks = (
       <Fragment>
-           <NavLink onClick={logout} className="nav-item nav-link" to="/">      
-               Logout
-          </NavLink>
-          <NavLink className="nav-item nav-link" to="/leads" >Leads</NavLink>
+           <NavLink className="nav-item nav-link" to="/leads" >Leads</NavLink>
+           <NavLink className="nav-item nav-link" to="/dashboard" >Profile</NavLink>
+           <NavLink onClick={logout} className="nav-item nav-link" to="/">Logout</NavLink>          
       </Fragment>     
     )
     const guestLinks = (

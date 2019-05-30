@@ -22,6 +22,7 @@ import EditProfile from './components/layout/dashboard/EditProfile'
 import PrivateRoute from './components/commons/privateRoute'
 import CreateLead from './components/layout/leads/CreateLead';
 import Leads from './components/layout/leads/Leads';
+import EditLead from './components/layout/leads/EditLead'
 
 function App() {
   return (
@@ -39,7 +40,8 @@ function App() {
                 <PrivateRoute path="/createProfile" component={CreateProfile} />
                 <PrivateRoute path="/editProfile/:id" component={EditProfile} /> 
                 <PrivateRoute path="/leads" component={Leads}  />  
-                <PrivateRoute path="/leadForm" component={CreateLead} />           
+                <PrivateRoute path="/leadForm" component={CreateLead} />   
+                <PrivateRoute path="/editLead/:id" component={EditLead} />        
                 <Route  path="/" component={Home} />
               </Switch>
           </main> 

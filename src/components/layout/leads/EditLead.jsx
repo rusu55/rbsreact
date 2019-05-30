@@ -1,16 +1,14 @@
-import React, { Fragment} from 'react'
-import { withRouter } from 'react-router-dom'
-import PropTypes from 'prop-types'
-import Joi from 'joi-browser'
-
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import { createNewLead } from '../../../actions/leads'
-
+import Joi from 'joi-browser'
+import PropsTypes from 'prop-types'
 import Form from '../../commons/form'
 
+import { getLeadProfile } from '../../../actions/leads'
 
-class CreateLead extends Form{
-     state ={
+
+class EditLead extends Form {
+    state ={
         data: {
             name: "", email: "", phone: "", weddingDate: ""
         },
@@ -25,30 +23,43 @@ class CreateLead extends Form{
        
     }
 
-     doSubmit = () =>{
-        console.log("Form Submited!")
-        this.props.createNewLead(this.state.data, this.props.history)
-        console.log("Back!")
+    componentDidMount(){
+        this.props.getLeadProfile(this.props.match.params.id)
+        this.populateForm()
     }
+
+    populateForm = () =>{
+        const {lead, loading } = this.props.leads
+    }
+
+   
+
+    doSubmit = () =>{
+        
+    }
+
     render(){
         return(
             <Fragment>
-                <h1>Add New Lead</h1>
+                <h1>Edit Lead</h1>
                 <form onSubmit={this.handleSubmit}>
                     {this.renderInput("name" , "Name") }
                     {this.renderInput("email" , "Email Address") }
                     {this.renderInput("phone" , "Phone Number") }
                     {this.renderInput("weddingDate" , "Wedding Date", "date") }
-                    {this.renderButton("Add New Lead")}
+                    {this.renderButton("Update Lead")}
                 </form>
             </Fragment>
         )
     }
 }
 
-CreateLead.propTypes ={
-    createNewLead: PropTypes.func.isRequired
+EditLead.propsTypes ={
+    getLeadProfile: PropsTypes.func.isRequired,
+    lead: PropsTypes.object.isRequired
 }
 
-export default connect(null, { createNewLead })(withRouter(CreateLead))
-
+const mapStateToProps = state =>({
+    leads : state.leads
+})
+export default connect(mapStateToProps, {getLeadProfile})(EditLead)

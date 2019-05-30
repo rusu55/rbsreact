@@ -1,14 +1,13 @@
-import { CREATE_LEAD , LEAD_ERROR} from '../actions/types'
+import { CREATE_LEAD , LEAD_ERROR, GET_LEADS, GET_LEAD_PROFILE} from '../actions/types'
 
 const initialState = {
    lead: null,
     loading: true,
-
+    error : {}
 }
 
 export default function(state = initialState, action){
     const { type, payload} = action
-    console.log("Create Lead Reducer")
     switch(type) {
         case CREATE_LEAD : 
             return {
@@ -21,7 +20,14 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 loading: false,
-            }      
+            }   
+        case GET_LEADS:
+        case GET_LEAD_PROFILE:
+            return {
+                ...state,
+                loading: false,
+                lead: payload
+            }   
         default : 
             return state
     }
