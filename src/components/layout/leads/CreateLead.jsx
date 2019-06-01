@@ -1,5 +1,4 @@
 import React, { Fragment} from 'react'
-import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Joi from 'joi-browser'
 import { withRouter } from 'react-router-dom'
@@ -22,8 +21,8 @@ class CreateLead extends Form{
         name: Joi.string().required().min(4).max(50).label("Name"),
         email: Joi.string().required().min(6).max(50).email().label("Email Address"),
         phone: Joi.string().allow(''),
-        weddingDate: Joi.date().allow('')
-       
+        weddingDate: Joi.date().allow(''),
+        venue: Joi.string().allow('')
     }
 
      doSubmit = () =>{     
@@ -39,6 +38,7 @@ class CreateLead extends Form{
                     {this.renderInput("email" , "Email Address") }
                     {this.renderInput("phone" , "Phone Number") }
                     {this.renderInput("weddingDate" , "Wedding Date", "date") }
+                    {this.renderInput("venue" , "Venue") }
                     {this.renderButton("Add New Lead")}
                 </form>
             </Fragment>

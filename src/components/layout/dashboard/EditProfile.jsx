@@ -49,8 +49,8 @@ class EditProfile extends Form{
         this.populateForm()
     }
     doSubmit = () =>{
-        
-        this.props.editUserProfile(this.state.data, this.props.userProfile.profile._id, this.props.history)
+        console.log('Submited!')
+        //this.props.editUserProfile(this.state.data, this.props.userProfile.profile._id, this.props.history)
     }
     
     render(){
