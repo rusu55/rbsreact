@@ -2,6 +2,7 @@ import { CREATE_LEAD, LEAD_ERROR, GET_LEADS, GET_LEAD_PROFILE } from './types'
 
 import { apiUrl } from '../config.json'
 import { setAlert } from '../actions/alert'
+import { paginateData } from '../actions/paginate'
 import _ from 'lodash'
 import http from '../services/httpService'
 
@@ -43,6 +44,7 @@ export const createNewLead = (formData, history) => async dispatch =>{
             type: GET_LEADS,
             payload: result.data
         })
+        dispatch(paginateData(result.data), 1)
        }
        catch(ex){
         let errors = null

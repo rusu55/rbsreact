@@ -2,79 +2,61 @@ import React, { Fragment, useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 import Spinner from '../../commons/spinner'
-import { pSize } from '../../../config.json'
 import { getLeads } from '../../../actions/leads'
+import { paginateData } from '../../../actions/paginate'
 import Pagination from '../../commons/pagination'
-import {paginate} from '../../../utils/paginate'
+import LeadsTable from '../leads/LeadsTable'
 
-const Leads = ({getLeads, auth : {user}, leads: {lead, loading}}) =>{
-    const [page, setPage] = useState(1)
-    const [pageSize, setPageSize] = useState(pSize)
-    
+
+const Leads = ({getLeads, auth : {user}, leads: {lead, loading}, paginateData, paginate: {pageSize, currentPage, data}}) =>{
+    const [sortBy, setSort] = useState({path: 'name', order: 'asc'})
     useEffect(()=>{ getLeads()}, [])
-   
+    const sorted = _.orderBy(lead, [sortBy.path], [sortBy.order])
 
     const handlePageChange = (page) =>{
-        setPage(page)
+        const sorted = _.orderBy(lead, [sortBy.path], [sortBy.order])
+       paginateData(sorted, page)
     }
-    
-   const  getPagedData = () => {
-        const result = paginate(lead, page, pageSize);
-        return result;
-      };
-    
-    //setLeadState(lead)
-    const paginateLeads = getPagedData();
 
+    const handleSort = (path) =>{
+        if(sortBy.path === path) sortBy.order = (sortBy.order === 'asc') ? 'desc' : 'asc'
+        console.log(sortBy.order)
+        setSort({path: path, order: sortBy.order})
+         paginateData(sorted, currentPage, sortBy)
+        //setSort({path: path, order: 'desc'})
+       // console.log(sortBy)
+    }
+     
+    
     return(
         <Fragment>
             <h1>Leads Page</h1>
             <Link to="/leadform" className="btn btn-primary my-1">Add New Lead</Link>
             {loading ? <Spinner/> :
-                <Fragment>
-                    {console.log(lead.length)}
-                <h1>Leads:</h1>
-                <div>
-                { lead.length > 0 ? (
-                        <table className="table">
-                        <thead>
-                            <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Wedding Date</th>
-                            <th>Venue</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {paginateLeads.map( item =>(
-                                 <tr key={item._id}>
-                                 <td><Link to={`/editLead/${item._id}`}>{item.name}</Link></td>
-                                 <td>{item.email}</td>
-                                 <td>{item.profile.weddingDate}</td>
-                                 <td>venue</td>
-                             </tr>
-                            ))}
-                           
-                        </tbody>
-                    </table>
-                ) : <p>No Leads</p>}
-               
-                </div>
+                <Fragment>                   
+                    <h1>Leads:</h1>
+                    <div>
+                    { lead.length > 0 ? (
+                        <LeadsTable data={data} onSort={handleSort} />
+                    ) : <p>No Leads</p>}               
+                    </div>
                 </Fragment>
             }
-             <Pagination  itemsCount={lead === null ? 0 : lead.length} pageSize={pageSize} currentPage={page} onPageChange={handlePageChange}  />
+             <Pagination  itemsCount={lead === null ? 0 : lead.length} pageSize={pageSize} currentPage={currentPage} onPageChange={handlePageChange}  />
         </Fragment>
-
     )
 }
 
 Leads.propTypes ={
-    getLeads : PropTypes.func.isRequired
+    getLeads : PropTypes.func.isRequired,
+    paginateData: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state =>({
     auth : state.auth,
-    leads: state.leads
+    leads: state.leads,
+    paginate: state.paginate
 })
-export default connect(mapStateToProps, {getLeads})(Leads)
+export default connect(mapStateToProps, {getLeads, paginateData})(Leads)

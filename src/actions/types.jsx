@@ -15,3 +15,5 @@ export const LEAD_ERROR = 'LEAD_ERROR'
 export const GET_LEADS = 'GET_LEADS'
 export const GET_LEAD_PROFILE = ' GET_LEAD_PROFILE'
 
+export const PAGINATE = 'PAGINATE'
+
