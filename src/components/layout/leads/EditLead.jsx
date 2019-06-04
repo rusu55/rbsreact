@@ -44,7 +44,7 @@ class EditLead extends Form {
             email: lead.email,
             phone: lead.phone,
             weddingDate : Moment(lead.weddingDate).format('YYYY-MM-DD'),
-            venue : lead.profile.venue
+            venue : lead.details.venue
        }
    }
    
