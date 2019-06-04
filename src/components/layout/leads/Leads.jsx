@@ -8,10 +8,10 @@ import { getLeads } from '../../../actions/leads'
 import Pagination from '../../commons/pagination'
 import LeadsTable from '../leads/LeadsTable'
 
-const Leads = ({getLeads, auth : {user}, leads: {lead, loading}, paginate: {pageSize, currentPage}}) => {
+const Leads = ({getLeads, auth : {user}, leads: {lead, loading}, paginate}) => {
         
     useEffect(()=>{ getLeads()}, [])
-    console.log(pageSize)
+    
        return(
         <Fragment>
             <h1>Leads Page</h1>
@@ -26,14 +26,15 @@ const Leads = ({getLeads, auth : {user}, leads: {lead, loading}, paginate: {page
                     </div>
                 </Fragment>
             }
-             <Pagination pageSize = {pageSize} currentPage={currentPage} />
+             <Pagination paginate= {paginate} leads = {lead} />
         </Fragment>
     )
 }
 
  Leads.propTypes = {
     auth : PropTypes.object.isRequired,
-    leads: PropTypes.object.isRequired
+    leads: PropTypes.object.isRequired,
+    paginate: PropTypes.object.isRequired
  }
 
 const mapStateToProps = state =>({

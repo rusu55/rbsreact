@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import { paginateData } from '../../actions/paginate'
 
-const Pagination = ({leads: {lead}, paginateData, paginate: {pageSize, currentPage, data, sort}}) =>{
+const Pagination = ({leads: {lead}, paginateData, paginate: {pageSize, currentPage, sort}}) =>{
     
     const itemsCount = lead === null ? 0 : lead.length
     const pagesCount = Math.ceil(itemsCount / pageSize)
@@ -29,8 +29,9 @@ const Pagination = ({leads: {lead}, paginateData, paginate: {pageSize, currentPa
 }
 
 Pagination.propTypes ={
-    pageSize: PropTypes.number.isRequired,
-    currentPage: PropTypes.number.isRequired
+    paginate: PropTypes.object.isRequired,
+    leads: PropTypes.object.isRequired,
+    paginateData: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state =>({
