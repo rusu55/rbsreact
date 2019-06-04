@@ -1,8 +1,13 @@
 import React , { Fragment} from 'react'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-const Pagination = ({itemsCount, pageSize, currentPage, onPageChange}) =>{
+import { paginateData } from '../../actions/paginate'
+
+const Pagination = ({leads: {lead}, paginateData, paginate: {pageSize, currentPage, data, sort}}) =>{
+    
+    const itemsCount = lead === null ? 0 : lead.length
     const pagesCount = Math.ceil(itemsCount / pageSize)
     if (pageSize === 1) return null
     
@@ -14,7 +19,7 @@ const Pagination = ({itemsCount, pageSize, currentPage, onPageChange}) =>{
                 <ul className="pagination">
                     { pages.map(page => (
                         <li key={page} className={page === currentPage ? "page-item active" : "page-item"}>
-                            <a className="page-link" onClick ={()=>onPageChange(page)}>{page}</a>
+                            <a className="page-link" onClick ={()=>paginateData(lead, page, sort)}>{page}</a>
                         </li>
                     ))}
                 </ul>
@@ -24,10 +29,14 @@ const Pagination = ({itemsCount, pageSize, currentPage, onPageChange}) =>{
 }
 
 Pagination.propTypes ={
-  itemsCount: PropTypes.number.isRequired,
-  pageSize: PropTypes.number.isRequired,
-  currentPage: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired
+    pageSize: PropTypes.number.isRequired,
+    currentPage: PropTypes.number.isRequired
 }
 
-export default Pagination
+const mapStateToProps = state =>({
+    leads: state.leads,
+    paginate: state.paginate
+    
+})
+
+export default connect(mapStateToProps, {paginateData})(Pagination)

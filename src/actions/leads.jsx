@@ -40,11 +40,11 @@ export const createNewLead = (formData, history) => async dispatch =>{
 
        try{
         const result = await http.get(apiEndPoint)
-        dispatch({
+           dispatch({
             type: GET_LEADS,
             payload: result.data
         })
-        dispatch(paginateData(result.data), 1)
+        dispatch(paginateData(result.data, 1, null))
        }
        catch(ex){
         let errors = null

@@ -1,15 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { sortData } from '../../../actions/paginate'
 
-const LeadsTable = (props) =>{
-    const { data, onSort } = props
-    return(
+const LeadsTable = ({leads: {lead}, paginate: {data,sort}, sortData}) =>{
+      return(
                     <table className="table">
                         <thead>
                             <tr>
-                            <th onClick ={()=> onSort('name')}>Name</th>
+                            <th onClick ={()=> sortData('name', sort, lead)}>Name</th>
                             <th>Email</th>
-                            <th onClick ={()=> onSort('weddingDate')}>Wedding Date</th>
+                            <th onClick ={()=> sortData('weddingDate', sort, lead)}>Wedding Date</th>
                             <th>Venue</th>
                             </tr>
                         </thead>
@@ -18,7 +20,7 @@ const LeadsTable = (props) =>{
                                  <tr key={item._id}>
                                  <td><Link to={`/editLead/${item._id}`}>{item.name}</Link></td>
                                  <td>{item.email}</td>
-                                 <td>{item.profile.weddingDate}</td>
+                                 <td></td>
                                  <td>venue</td>
                              </tr>
                             ))}
@@ -28,4 +30,14 @@ const LeadsTable = (props) =>{
     )
 }
 
-export default LeadsTable
+LeadsTable.propTypes = {
+    paginate : PropTypes.object.isRequired,
+    sortData: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => ({
+    leads: state.leads,
+    paginate: state.paginate
+})
+
+export default connect(mapStateToProps,{sortData})(LeadsTable)
