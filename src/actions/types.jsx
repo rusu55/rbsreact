@@ -18,3 +18,6 @@ export const GET_LEAD_PROFILE = ' GET_LEAD_PROFILE'
 export const PAGINATE = 'PAGINATE'
 export const SORT_BY = 'SORT_BY'
 
+export const GET_VENDOR_PROFILE = 'GET_VENDOR_PROFILE'
+export const VENDOR_PROFILE_ERROR = 'VENDOR_PROFILE_ERROR'
+

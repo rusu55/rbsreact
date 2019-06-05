@@ -20,9 +20,13 @@ import Dashboard from './components/layout//dashboard/Dashboard'
 import CreateProfile from './components/layout/dashboard/CreateProfile'
 import EditProfile from './components/layout/dashboard/EditProfile'
 import PrivateRoute from './components/commons/privateRoute'
-import CreateLead from './components/layout/leads/CreateLead';
-import Leads from './components/layout/leads/Leads';
+import CreateLead from './components/layout/leads/CreateLead'
+import Leads from './components/layout/leads/Leads'
 import EditLead from './components/layout/leads/EditLead'
+import Profiles from './components/vendors/Profiles'
+import Profile from './components/vendors/Profile'
+import EditVendorProfile from './components/vendors/EditVendorProfile'
+import AddVendorProfile from './components/vendors/AddVendorProfile'
 
 function App() {
   return (
@@ -41,7 +45,11 @@ function App() {
                 <PrivateRoute path="/editProfile/:id" component={EditProfile} /> 
                 <PrivateRoute path="/leads" component={Leads}  />  
                 <PrivateRoute path="/leadForm" component={CreateLead} />   
-                <PrivateRoute path="/editLead/:id" component={EditLead} />        
+                <PrivateRoute path="/editLead/:id" component={EditLead} />      
+                <PrivateRoute path="/vendors/:id" component={Profile} /> 
+                <PrivateRoute path="/vendors/" component={Profiles} /> 
+                <PrivateRoute path="/vendors/editProfile/:id" component={EditVendorProfile} /> 
+                <PrivateRoute path="/vendors/addVendor" component={AddVendorProfile} /> 
                 <Route  path="/" component={Home} />
               </Switch>
           </main> 

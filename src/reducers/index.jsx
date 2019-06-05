@@ -4,6 +4,7 @@ import auth from './auth'
 import userProfile from './userProfile'
 import leads from './leads'
 import paginate from './paginate'
+import vendor from './vendor'
  
 
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
     auth,
     userProfile,
     leads,
-    paginate
+    paginate,
+    vendor
 })
