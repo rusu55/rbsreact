@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { setAlert} from '../../actions/alert'
 import { login } from '../../actions/auth'
 
+
 import Form from '../commons/form'
 
 
@@ -39,12 +40,39 @@ class UserLogin extends Form{
         }
         return(
             <Fragment>
-                 <form onSubmit={this.handleSubmit}>
-                        {this.renderInput("email", "Email")}
-                        {this.renderInput("password", "Password", "password")}   
-                        {this.renderButton("Login")}
-                 </form>
+                <div className="main d-flex w-100">
+                    <div className="container d-flex flex-column">
+                        <div className="row h-100">
+                            <div className="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+                                <div className="d-table-cell align-middle">
+
+                                    <div className="text-center mt-4">
+                                        <h1 className="h2">Welcome back</h1>
+                                        <p className="lead">
+                                            Sign in to your account to continue
+                                        </p>
+                                    </div>
+
+                                    <div className="card">
+                                        <div className="card-body">
+                                            <div className="m-sm-4">
+                                            
+                                                <form onSubmit={this.handleSubmit}>
+                                                        {this.renderInput("email", "Email")}
+                                                        {this.renderInput("password", "Password", "password")}   
+                                                        {this.renderButton("Login")}
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </Fragment>
+            
         )
     }
 }

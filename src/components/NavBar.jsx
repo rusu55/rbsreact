@@ -5,53 +5,38 @@ import PropTypes from 'prop-types'
 import { logout } from '../actions/auth'
 
 const NavBar = ({ auth: {isAuthenticated, loading}, logout}) =>{
-    // / console.log(loading)
-    const authLinks = (
-      <Fragment>
-           <NavLink className="nav-item nav-link" to="/leads" >Leads</NavLink>
-           <NavLink className="nav-item nav-link" to="/vendors" >Venors</NavLink>
-           <NavLink className="nav-item nav-link" to="/dashboard" >User Profile</NavLink>
-           <NavLink onClick={logout} className="nav-item nav-link" to="/">Logout</NavLink>          
-      </Fragment>     
-    )
-    const guestLinks = (
-      <Fragment>
-          <NavLink className="nav-item nav-link" to="/">
-            Home
-          </NavLink>
-          <NavLink className="nav-item nav-link" to="/Login">
-          Login
-          </NavLink>   
-          <NavLink className="nav-item nav-link" to="/register">
-          Register
-          </NavLink>  
-      </Fragment>
-      
-    )
-
     return(
-       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-            <Link className="navbar-brand" to="/">
-                     RBS
-            </Link>
-            <button
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                 <span className="navbar-toggler-icon" />
-          </button>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav">
-          { isAuthenticated ? authLinks : guestLinks}          
-        </div>
-      </div>
-    </nav>
+        <nav className="sidebar">
+                <div className="sidebar-content ">
+                        <a className="sidebar-brand" href="index.html">
+                            <i className="align-middle" data-feather="box"></i>
+                            <span className="align-middle">Red Bank Studio</span>
+                        </a>
 
+                    <ul className="sidebar-nav">
+                        <li className="sidebar-header">
+                            Main
+                        </li>
+                        <li className="sidebar-item">
+                            <a href="#dashboards" data-toggle="collapse" className="sidebar-link collapsed">
+                                <i className="align-middle" data-feather="sliders"></i> <span className="align-middle">Dashboard</span>
+                            </a>
+                            <ul id="dashboards" className="sidebar-dropdown list-unstyled collapse ">
+                                <li className="sidebar-item"><a className="sidebar-link" href="dashboard-default.html">Default</a></li>
+                                <li className="sidebar-item"><a className="sidebar-link" href="dashboard-analytics.html">Analytics</a></li>
+                                <li className="sidebar-item"><a className="sidebar-link" href="dashboard-e-commerce.html">E-commerce</a></li>
+                                <li className="sidebar-item"><a className="sidebar-link" href="dashboard-social.html">Social</a></li>
+                                <li className="sidebar-item"><a className="sidebar-link" href="dashboard-crypto.html">Crypto <span className="sidebar-badge badge badge-primary">New</span></a></li>
+                            </ul>
+                        </li>
+                        <li className="sidebar-item">
+                            <a className="sidebar-link" href="documentation.html">
+                                 <i className="align-middle" data-feather="book-open"></i> <span className="align-middle">Documentation</span>
+                            </a>
+                        </li>				
+                    </ul>
+                </div>
+        </nav>
     )
 }
 NavBar.propTypes ={

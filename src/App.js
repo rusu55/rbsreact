@@ -9,9 +9,8 @@ import { Provider } from 'react-redux'
 import store from './store'
 
 
-import './App.css';
-
 import NavBar from './components/NavBar'
+import TopNavBar from './components/TopNavBar'
 import UserLogin from './components/auth/UserLogin'
 import Home from './components/layout/Home'
 import Alert from './components/commons/alert'
@@ -34,25 +33,28 @@ function App() {
       <BrowserRouter>
         <Fragment>
         <ToastContainer />
-          <NavBar />
-            <main  className="container"> 
-              <Alert />           
-              <Switch>
-                <Route path="/login" component={UserLogin} />
-                <Route path="/register" component={UserRegister} />               
-                <PrivateRoute path="/dashboard" component={Dashboard} />
-                <PrivateRoute path="/createProfile" component={CreateProfile} />
-                <PrivateRoute path="/editProfile/:id" component={EditProfile} /> 
-                <PrivateRoute path="/leads" component={Leads}  />  
-                <PrivateRoute path="/leadForm" component={CreateLead} />   
-                <PrivateRoute path="/editLead/:id" component={EditLead} />      
-                <PrivateRoute path="/vendors/:id" component={Profile} /> 
-                <PrivateRoute path="/vendors/" component={Profiles} /> 
-                <PrivateRoute path="/vendors/editProfile/:id" component={EditVendorProfile} /> 
-                <PrivateRoute path="/vendors/addVendor" component={AddVendorProfile} /> 
-                <Route  path="/" component={Home} />
-              </Switch>
-          </main> 
+            <div  className="wrapper"> 
+              <NavBar />
+              <div className="main">
+                <TopNavBar />
+                <Alert />           
+                <Switch>
+                  <Route path="/login" component={UserLogin} />
+                  <Route path="/register" component={UserRegister} />               
+                  <PrivateRoute path="/dashboard" component={Dashboard} />
+                  <PrivateRoute path="/createProfile" component={CreateProfile} />
+                  <PrivateRoute path="/editProfile/:id" component={EditProfile} /> 
+                  <PrivateRoute path="/leads" component={Leads}  />  
+                  <PrivateRoute path="/leadForm" component={CreateLead} />   
+                  <PrivateRoute path="/editLead/:id" component={EditLead} />      
+                  <PrivateRoute path="/vendors/:id" component={Profile} /> 
+                  <PrivateRoute path="/vendors/" component={Profiles} /> 
+                  <PrivateRoute path="/vendors/editProfile/:id" component={EditVendorProfile} /> 
+                  <PrivateRoute path="/vendors/addVendor" component={AddVendorProfile} /> 
+                  <Route  path="/" component={Home} />
+                </Switch>
+              </div>
+          </div> 
       </Fragment>
       </BrowserRouter>
     </Provider>
