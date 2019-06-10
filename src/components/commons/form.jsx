@@ -35,12 +35,13 @@ class Form extends Component{
         this.doSubmit();
     }
 
-    renderInput(name, label, type="text"){
+    renderInput(name, label, classStyle, type="text"){
         const {data, errors} = this.state
 
         return(
             <Input 
                 type={type}
+                classStyle = {classStyle}
                 name={name}
                 value={data[name]}
                 label={label}

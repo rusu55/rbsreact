@@ -58,8 +58,8 @@ class UserLogin extends Form{
                                             <div className="m-sm-4">
                                             
                                                 <form onSubmit={this.handleSubmit}>
-                                                        {this.renderInput("email", "Email")}
-                                                        {this.renderInput("password", "Password", "password")}   
+                                                        {this.renderInput("email", "Email", "form-group")}
+                                                        {this.renderInput("password", "Password", "form-group", "password")}   
                                                         {this.renderButton("Login")}
                                                 </form>
                                             </div>

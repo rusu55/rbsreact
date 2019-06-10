@@ -21,7 +21,7 @@ import EditProfile from './components/layout/dashboard/EditProfile'
 import PrivateRoute from './components/commons/privateRoute'
 import CreateLead from './components/layout/leads/CreateLead'
 import Leads from './components/layout/leads/Leads'
-import EditLead from './components/layout/leads/EditLead'
+import EditLead from './components/layout/leads/EditLeadOld'
 import Profiles from './components/vendors/Profiles'
 import Profile from './components/vendors/Profile'
 import EditVendorProfile from './components/vendors/EditVendorProfile'
@@ -51,7 +51,7 @@ function App() {
                   <PrivateRoute path="/vendors/" component={Profiles} /> 
                   <PrivateRoute path="/vendors/editProfile/:id" component={EditVendorProfile} /> 
                   <PrivateRoute path="/vendors/addVendor" component={AddVendorProfile} /> 
-                  <Route  path="/" component={Home} />
+                  <Route exact path="/" component={UserLogin} />
                 </Switch>
               </div>
           </div> 
