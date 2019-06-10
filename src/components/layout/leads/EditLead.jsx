@@ -15,7 +15,45 @@ class EditLead extends Form {
             name: "", email: "", phone: "", weddingDate: "", venue : ""
         },
         errors:{}
-    }
+        }
+
+        schema = {
+            _id : Joi.string(),
+            name: Joi.string().required().min(4).max(50).label("Name"),
+            email: Joi.string().required().min(6).max(50).email().label("Email Address"),
+            phone: Joi.string().allow(''),
+            weddingDate: Joi.date().allow('').label('Wedding Date'),
+            venue: Joi.string().allow('').label('Venue')
+        }
+    
+        async componentDidMount(){
+            
+            await this.props.getLeadProfile(this.props.match.params.id)
+            this.populateForm()
+        }   
+    
+    
+        populateForm = () =>{
+            this.setState({data: this.mapToViewModel(this.props.leads.lead)})
+        }
+      
+        mapToViewModel(lead){
+           return {
+                _id: lead._id,
+                name: lead.name,
+                email: lead.email,
+                phone: lead.phone,
+                weddingDate : Moment(lead.weddingDate).format('YYYY-MM-DD'),
+                venue : lead.details.venue
+           }
+       }
+       
+    
+        doSubmit = () =>{
+           
+            this.props.updateLeadProfile(this.state.data, this.props.leads.lead._id, this.props.history)
+        }
+
     render(){
         return(
             <Fragment>
@@ -80,16 +118,17 @@ class EditLead extends Form {
 											<h5 className="card-title mb-0">Private info</h5>
 										</div>
 										<div className="card-body">
-                                             <form >
-												<div className="form-row">
-                                                  {this.renderInput("firstname" , "First Name",  "form-group col-md-6") } 
-                                                  {this.renderInput("lastname" , "Last Name", "col-md-6") } 													
-												</div>
+                                             <form onSubmit={this.handleSubmit}>
+												
+                                                {this.renderInput("name" , "Name",  "form-group") }                                                   																									
 												{this.renderInput("email" , "Email Address", "form-group") }
                                                 {this.renderInput("phone" , "Phone Number", "form-group") }
-                                                {this.renderInput("weddingDate" , "Wedding Date", "form-group","date") }
-                                                {this.renderInput("venue" , "Venue", "form-group") }					
-												{this.renderButton("Update Lead" ,"form-group")}
+                                               
+                                                <div className="form-row">
+                                                  {this.renderInput("weddingDate" , "Wedding Date", "form-group col-md-4","date") }
+                                                  {this.renderInput("venue" , "Venue", "form-group col-md-8") }					
+                                                </div>
+                                                {this.renderButton("Update Lead" ,"form-group")}
 											</form>
 
 										</div>
@@ -101,7 +140,7 @@ class EditLead extends Form {
 										<div className="card-body">
 											<h5 className="card-title">Password</h5>
 
-											<form>
+											<form >
 												<div className="form-group">
 													<label for="inputPasswordCurrent">Current password</label>
 													<input type="password" className="form-control" id="inputPasswordCurrent" />

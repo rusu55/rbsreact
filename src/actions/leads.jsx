@@ -105,7 +105,7 @@ export const updateLeadProfile = (formData, id,  history) => async dispatch =>{
            type: CREATE_LEAD,
            payload: formData
         })
-        dispatch(setAlert("Lead Profile Updated!"))
+        dispatch(setAlert("Lead Profile Updated!", "success"))
         history.push('/leads')
     } catch(ex){
        dispatch({
