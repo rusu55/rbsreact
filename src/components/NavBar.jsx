@@ -9,7 +9,7 @@ const NavBar = ({ auth: {isAuthenticated, loading}, logout}) =>{
     const authLinks = (<Fragment>
                          <nav className="sidebar">
                                     <div className="sidebar-content ">
-                                            <Link className="sidebar-brand" href="index.html">
+                                            <Link className="sidebar-brand" to="/">
                                                 <i className="align-middle" data-feather="box"></i>
                                                 <span className="align-middle">Red Bank Studio</span>
                                             </Link>
@@ -20,9 +20,14 @@ const NavBar = ({ auth: {isAuthenticated, loading}, logout}) =>{
                                             </li>
                                             <li className="sidebar-item">
                                                 <NavLink className="sidebar-link" to="/leads">
-                                                    <i className="align-middle" data-feather="book-open"></i> <span className="align-middle">Leads</span>
+                                                    <i className="align-middle fa fa-users" aria-hidden="true"></i> <span className="align-middle">Leads</span>
                                                 </NavLink>
-                                            </li>				
+                                            </li>
+                                            <li className="sidebar-item">
+                                                <NavLink className="sidebar-link" to="/vendors">
+                                                    <i className="align-middle fa fa-users"></i> <span className="align-middle">Vendors</span>
+                                                </NavLink>
+                                            </li>					
                                         </ul>
                                     </div>
                             </nav>

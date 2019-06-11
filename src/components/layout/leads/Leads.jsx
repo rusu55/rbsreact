@@ -6,7 +6,8 @@ import _ from 'lodash'
 import Spinner from '../../commons/spinner'
 import { getLeads } from '../../../actions/leads'
 import Pagination from '../../commons/pagination'
-import LeadsTable from '../leads/LeadsTable'
+import LeadsTable from './LeadsTable'
+import LeadSticker from '../leadSticker';
 
 const Leads = ({getLeads, auth : {user}, leads: {lead, loading}, paginate}) => {
         
@@ -14,19 +15,38 @@ const Leads = ({getLeads, auth : {user}, leads: {lead, loading}, paginate}) => {
     
        return(
         <Fragment>
-            <h1>Leads Page</h1>
-            <Link to="/leadform" className="btn btn-primary my-1">Add New Lead</Link>
-            {loading ? <Spinner/> :
-                <Fragment>                   
-                    <h1>Leads:</h1>
-                    <div>
-                    { lead.length > 0 ? (
-                        <LeadsTable />
-                    ) : <p>No Leads</p>}               
-                    </div>
-                </Fragment>
-            }
-             <Pagination paginate= {paginate} leads = {lead} />
+            <main className="content">
+				<div className="container-fluid p-0">
+                <h1 className="h3 mb-3">Leads</h1>
+                <div className="row">
+						<div className="col-xl-8">
+							<div className="tab-content">
+								<div className="tab-pane fade show active" id="account" role="tabpanel">								
+									<div className="card">
+										<div className="card-header">
+                                        <Link to="/leadform" className="btn btn-primary my-1">Add New Lead</Link>
+										</div>
+										<div className="card-body">
+                                             
+                                             {loading ? <Spinner/> :
+                                                <Fragment>                
+                                                    { lead.length > 0 ? (
+                                                        <LeadsTable />
+                                                    ) : <p>No Leads</p>}       
+                                                 </Fragment>
+                                             }
+                                             <Pagination paginate= {paginate} leads = {lead} />
+										</div>
+                                        
+									</div>
+								</div>								
+							</div>
+						</div>
+                       <LeadSticker />
+					</div>
+                </div>
+            </main>            
+             
         </Fragment>
     )
 }

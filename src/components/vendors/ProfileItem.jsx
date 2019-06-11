@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 const ProfileItem = (props) =>{
     return(
-           <p></p>
+           <p>cscdscdc</p>
           )
 }
 

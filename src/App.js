@@ -48,7 +48,7 @@ function App() {
                   <PrivateRoute path="/leadForm" component={CreateLead} />   
                   <PrivateRoute path="/editLead/:id" component={EditLead} />      
                   <PrivateRoute path="/vendors/:id" component={Profile} /> 
-                  <PrivateRoute path="/vendors/" component={Profiles} /> 
+                  <PrivateRoute path="/vendors" component={Profiles} /> 
                   <PrivateRoute path="/vendors/editProfile/:id" component={EditVendorProfile} /> 
                   <PrivateRoute path="/vendors/addVendor" component={AddVendorProfile} /> 
                   <Route exact path="/" component={UserLogin} />
