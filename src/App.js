@@ -26,6 +26,7 @@ import Profiles from './components/vendors/Profiles'
 import Profile from './components/vendors/Profile'
 import EditVendorProfile from './components/vendors/EditVendorProfile'
 import AddVendorProfile from './components/vendors/AddVendorProfile'
+import ToDos from './components/todo/ToDos'
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
                   <PrivateRoute path="/vendors" component={Profiles} /> 
                   <PrivateRoute path="/vendors/editProfile/:id" component={EditVendorProfile} /> 
                   <PrivateRoute path="/vendors/addVendor" component={AddVendorProfile} /> 
+                  <PrivateRoute path="/todos" component={ToDos} /> 
                   <Route exact path="/" component={UserLogin} />
                 </Switch>
               </div>
