@@ -6,10 +6,11 @@ import { connect } from 'react-redux'
 import Spinner from '../commons/spinner'
 import ToDoTable from './ToDoTable'
 import ToDoSticker from './ToDoSticker'
+import { getTasks } from '../../actions/tasks'
 
-const ToDos = () =>{
+const ToDos = ({ auth, tasks: {loading, tasks}, getTasks }) =>{
    const [completed, setCompleted] = useState(0)
-    useEffect(()=>{},[])
+    useEffect(()=>{getTasks()},[])
     const handleClick =(item) =>{
         console.log('Clicked!')
         completed === 0 ? setCompleted(1) : setCompleted(0)
@@ -25,8 +26,16 @@ const ToDos = () =>{
 							<div className="tab-content">
 								<div className="tab-pane fade show active" id="account" role="tabpanel">								
 									<div className="card">
-										<div className="card-body">                                   
-                                                    <ToDoTable onCompleted={handleClick} completed={completed} />
+										<div className="card-body">  
+                                        {loading ? <Spinner />: (
+                                                <Fragment>
+                                                    {tasks.length > 0 ? (
+                                                        <h1>More than One</h1>
+                                                    ) : (  <ToDoTable onCompleted={handleClick} completed={completed} /> )}
+                                                   
+                                                </Fragment>
+                                            )}                                 
+                                                   
 										</div>
 									</div>
 								</div>								
@@ -46,6 +55,7 @@ ToDos.propTypes ={
 }
 
 const mapStateToProps = state =>({
-
+        auth : state.auth,
+        tasks : state.task
 })
-export default connect(mapStateToProps, {})(ToDos)
+export default connect(mapStateToProps, {getTasks})(ToDos)

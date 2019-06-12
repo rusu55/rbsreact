@@ -21,3 +21,6 @@ export const SORT_BY = 'SORT_BY'
 export const GET_VENDOR_PROFILE = 'GET_VENDOR_PROFILE'
 export const VENDOR_PROFILE_ERROR = 'VENDOR_PROFILE_ERROR'
 
+export const TASKS_ERROR = 'TASKS_ERROR'
+
+export const GET_TASKS = 'GET_TASKS'
