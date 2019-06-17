@@ -1,39 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ToDoTable = ({onCompleted, completed}) =>{
+const ToDoTable = ({onCompleted, completed, tasks}) =>{
+   
     return(
         <table id="datatables-basic" className="table table-striped">
           <tbody>
-           
-                        <tr>
+                     {tasks.map(task => (
+                           <tr key={task._id}>
                            <td><span className='badge badge-warning'>23 Mat</span></td>
                            <td>
-                              {completed === 1 ? ( <del>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel porttitor metus. </del>) : 
-                              (<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel porttitor metus.</span>)}                             
+                              {task.finished && task.finished === true ? ( <del>{task.description} </del>) : 
+                              (<span>{task.description}</span>)}                             
                            </td>
-                           <td><input onClick={()=>onCompleted()} type="checkbox" className="form-control-lg" /></td>                           
+                           <td><input onClick={()=>onCompleted(task._id)} type="checkbox" className="form-control-lg" /></td>                           
                         </tr>
-                        <tr>
-                           <td><span className='badge badge-success'>23 Jun</span></td>
-                           <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel porttitor metus. </td>
-                           <td><input type="checkbox" className="form-control-lg" /></td>                           
-                        </tr>
-                        <tr>
-                           <td>23 Jun</td>
-                           <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel porttitor metus. </td>
-                           <td><input type="checkbox" className="form-control-lg" /></td>                           
-                        </tr>
-                        <tr>
-                           <td>23 Jun</td>
-                           <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel porttitor metus. </td>
-                           <td><input type="checkbox" className="form-control-lg" /></td>                           
-                        </tr>
-                        <tr>
-                           <td>23 Jun</td>
-                           <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel porttitor metus. </td>
-                           <td><input type="checkbox" className="form-control-lg" /></td>                           
-                        </tr>                            
+                     ))}
+                        
+                                  
         </tbody>
     </table>
     )

@@ -6,16 +6,23 @@ import { connect } from 'react-redux'
 import Spinner from '../commons/spinner'
 import ToDoTable from './ToDoTable'
 import ToDoSticker from './ToDoSticker'
-import { getTasks } from '../../actions/tasks'
+import { getTasks, SetTask } from '../../actions/tasks'
 
-const ToDos = ({ auth, tasks: {loading, tasks}, getTasks }) =>{
+const ToDos = ({ auth, tasks: {loading, tasks}, getTasks, SetTask }) =>{
    const [completed, setCompleted] = useState(0)
     useEffect(()=>{getTasks()},[])
+    
     const handleClick =(item) =>{
-        console.log('Clicked!')
-        completed === 0 ? setCompleted(1) : setCompleted(0)
+       // console.log(`Clicked: ${item}`)
+        SetTask(item)
+       // completed === 0 ? setCompleted(1) : setCompleted(0)
         
     }
+
+    const addToDo = (data) => {
+            console.log(data)
+    }
+
     return(
         <Fragment>
             <main className="content">
@@ -30,8 +37,8 @@ const ToDos = ({ auth, tasks: {loading, tasks}, getTasks }) =>{
                                         {loading ? <Spinner />: (
                                                 <Fragment>
                                                     {tasks.length > 0 ? (
-                                                        <h1>More than One</h1>
-                                                    ) : (  <ToDoTable onCompleted={handleClick} completed={completed} /> )}
+                                                        <ToDoTable onCompleted={handleClick} completed={completed} tasks={tasks} />
+                                                    ) : (<h1>No Tasks!</h1>)}
                                                    
                                                 </Fragment>
                                             )}                                 
@@ -41,7 +48,7 @@ const ToDos = ({ auth, tasks: {loading, tasks}, getTasks }) =>{
 								</div>								
 							</div>
 						</div>
-                       <ToDoSticker />
+                       <ToDoSticker/>
 					</div>
                 </div>
             </main>            
@@ -58,4 +65,4 @@ const mapStateToProps = state =>({
         auth : state.auth,
         tasks : state.task
 })
-export default connect(mapStateToProps, {getTasks})(ToDos)
+export default connect(mapStateToProps, {getTasks, SetTask})(ToDos)

@@ -22,5 +22,6 @@ export const GET_VENDOR_PROFILE = 'GET_VENDOR_PROFILE'
 export const VENDOR_PROFILE_ERROR = 'VENDOR_PROFILE_ERROR'
 
 export const TASKS_ERROR = 'TASKS_ERROR'
-
+export const SET_TASK = 'SET_TASK'
 export const GET_TASKS = 'GET_TASKS'
+export const CREATE_TASK = 'CREATE_TASK'

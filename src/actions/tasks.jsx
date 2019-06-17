@@ -1,4 +1,4 @@
-import { GET_TASKS, TASKS_ERROR } from '../actions/types'
+import { GET_TASKS, TASKS_ERROR, SET_TASK, CREATE_TASK } from '../actions/types'
 import { apiUrl } from '../config.json'
 import http from '../services/httpService'
 import { setAlert } from '../actions/alert'
@@ -31,3 +31,21 @@ export const getTasks = () => async dispatch =>{
     }  
 
 }
+
+export const SetTask = id => dispatch =>{
+   // console.log(id)
+    dispatch({
+        type: SET_TASK,
+        payload: id
+    })
+}
+
+export const createNewTask = data => dispatch =>{
+    //console.log(data)
+
+    dispatch({
+        type: CREATE_TASK,
+        payload: data
+    })
+}
+
