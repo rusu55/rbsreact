@@ -1,12 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Moment from 'moment'
 import PropTypes from 'prop-types'
 import { timeDifference } from '../utils/TimeDifference'
 
-const ToDoTable = ({onCompleted, completed, tasks}) =>{
+const ToDoTable = ({onCompleted, onEdit, completed, tasks}) =>{
    console.log(completed)
     return(
         <table id="datatables-basic" className="table table-striped">
+          <thead>
+              <td style={{ width: '10%' }}> Task Date </td>
+              <td style={{ width: '62%' }}>Task Description</td>
+              <td className="text-right" style={{ width: '18%' }}>Task Status</td>
+              <td className="text-right" style={{ width: '10%' }}>Action</td>
+          </thead>
           <tbody>
                      {tasks.map(task => (
                             //console.log(timeDifference(task.taskDate))
@@ -17,7 +24,13 @@ const ToDoTable = ({onCompleted, completed, tasks}) =>{
                            <td>
                                {completed.findIndex(obj => obj === task._id) > -1 ? (<del>{task.description}</del>) : (<span>{task.description}</span>)}                            
                            </td>
-                           <td><input onClick={()=>onCompleted(task._id)} type="checkbox" className="form-control-lg" /></td>                           
+                           <td className="text-right">
+                                {completed.findIndex(obj => obj === task._id) > -1 ? (<span onClick={()=>onCompleted(task._id)} style={{ cursor: "pointer" }} className='badge badge-success'> Mark as Uncompleted</span>) : (<span onClick={()=>onCompleted(task._id)} style={{ cursor: "pointer" }} className='badge badge-warning'> Mark as Completed</span>)} 
+                               
+                           </td> 
+                           <td className="text-right">
+                              {completed.findIndex(obj => obj === task._id) > -1 ? (<span></span>) : (<span onClick={()=>onEdit(task._id)} style={{ cursor: "pointer" }} className='badge badge-success'>Edit Task</span>)}                               
+                           </td>                          
                         </tr>
                      ))}
                         

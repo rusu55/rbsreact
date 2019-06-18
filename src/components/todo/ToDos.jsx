@@ -12,11 +12,12 @@ const ToDos = ({ auth, tasks: {loading, tasks, finished}, getTasks, SetTask }) =
    
     useEffect(()=>{getTasks()},[])
     
-    const handleClick =(item) =>{
-      
-        SetTask(item)
-       
-        
+    const handleClick =(item) =>{      
+        SetTask(item)           
+    }
+
+    const handleEdit = (item) => {
+        console.log(item)
     }
 
     const addToDo = (data) => {
@@ -37,7 +38,7 @@ const ToDos = ({ auth, tasks: {loading, tasks, finished}, getTasks, SetTask }) =
                                         {loading ? <Spinner />: (
                                                 <Fragment>
                                                     {tasks.length > 0 ? (
-                                                        <ToDoTable onCompleted={handleClick} completed={finished} tasks={tasks}/>
+                                                        <ToDoTable onCompleted={handleClick} onEdit={handleEdit} completed={finished} tasks={tasks}/>
                                                     ) : (<h1>No Tasks!</h1>)}
                                                    
                                                 </Fragment>
