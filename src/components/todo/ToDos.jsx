@@ -8,14 +8,14 @@ import ToDoTable from './ToDoTable'
 import ToDoSticker from './ToDoSticker'
 import { getTasks, SetTask } from '../../actions/tasks'
 
-const ToDos = ({ auth, tasks: {loading, tasks}, getTasks, SetTask }) =>{
-   const [completed, setCompleted] = useState(0)
+const ToDos = ({ auth, tasks: {loading, tasks, finished}, getTasks, SetTask }) =>{
+   
     useEffect(()=>{getTasks()},[])
     
     const handleClick =(item) =>{
-       // console.log(`Clicked: ${item}`)
+      
         SetTask(item)
-       // completed === 0 ? setCompleted(1) : setCompleted(0)
+       
         
     }
 
@@ -37,7 +37,7 @@ const ToDos = ({ auth, tasks: {loading, tasks}, getTasks, SetTask }) =>{
                                         {loading ? <Spinner />: (
                                                 <Fragment>
                                                     {tasks.length > 0 ? (
-                                                        <ToDoTable onCompleted={handleClick} completed={completed} tasks={tasks} />
+                                                        <ToDoTable onCompleted={handleClick} completed={finished} tasks={tasks}/>
                                                     ) : (<h1>No Tasks!</h1>)}
                                                    
                                                 </Fragment>
