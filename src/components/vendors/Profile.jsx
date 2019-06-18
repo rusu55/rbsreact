@@ -1,8 +1,7 @@
-import React, {Fragment, useEffect} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import {connect} from 'react-redux'
-import Spiner from '../commons/spinner'
 import { getVendorProfileById } from '../../actions/vendor'
 
 const Profile = ({ match, getVendorProfileById, vendor: { profile, loading}, auth }) =>{

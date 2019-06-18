@@ -1,4 +1,5 @@
 import React, { Fragment }  from 'react'
+import { Link } from 'react-router-dom'
 
 const SideBarMenu = () =>{
     return(
@@ -11,30 +12,30 @@ const SideBarMenu = () =>{
     </div>
 
     <div className="list-group list-group-flush" role="tablist">
-        <a className="list-group-item list-group-item-action active" data-toggle="list" href="#account" role="tab">
+        <Link className="list-group-item list-group-item-action active" data-toggle="list" to="#account" role="tab">
 Account
-</a>
-        <a className="list-group-item list-group-item-action" data-toggle="list" href="#password" role="tab">
+</Link>
+        <Link className="list-group-item list-group-item-action" data-toggle="list" to="#password" role="tab">
 Password
-</a>
-        <a className="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+</Link>
+        <Link className="list-group-item list-group-item-action" data-toggle="list" to="#" role="tab">
 Privacy and safety
-</a>
-        <a className="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+</Link>
+        <Link className="list-group-item list-group-item-action" data-toggle="list" to="#" role="tab">
 Email notifications
-</a>
-        <a className="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+</Link>
+        <Link className="list-group-item list-group-item-action" data-toggle="list" to="#" role="tab">
 Web notifications
-</a>
-        <a className="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+</Link>
+        <Link className="list-group-item list-group-item-action" data-toggle="list" to="#" role="tab">
 Widgets
-</a>
-        <a className="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+</Link>
+        <Link className="list-group-item list-group-item-action" data-toggle="list" to="#" role="tab">
 Your data
-</a>
-        <a className="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+</Link>
+        <Link className="list-group-item list-group-item-action" data-toggle="list" to="#" role="tab">
 Delete account
-</a>
+</Link>
     </div>
 </div>
 </div>

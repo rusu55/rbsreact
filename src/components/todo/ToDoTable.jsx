@@ -2,22 +2,24 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Moment from 'moment'
 import PropTypes from 'prop-types'
-import { timeDifference } from '../utils/TimeDifference'
+import { timeDifference } from '../commons/utils/TimeDifference'
 
 const ToDoTable = ({onCompleted, onEdit, completed, tasks}) =>{
-   console.log(completed)
+   
     return(
         <table id="datatables-basic" className="table table-striped">
           <thead>
-              <td style={{ width: '10%' }}> Task Date </td>
-              <td style={{ width: '62%' }}>Task Description</td>
-              <td className="text-right" style={{ width: '18%' }}>Task Status</td>
-              <td className="text-right" style={{ width: '10%' }}>Action</td>
+              <tr>
+                    <th style={{ width: '10%' }}> Task Date </th>
+                    <th style={{ width: '62%' }}>Task Description</th>
+                    <th className="text-right" style={{ width: '18%' }}>Task Status</th>
+                    <th className="text-right" style={{ width: '10%' }}>Action</th>
+                    </tr>
+              
           </thead>
           <tbody>
                      {tasks.map(task => (
-                            //console.log(timeDifference(task.taskDate))
-                           <tr key={task._id}>
+                         <tr key={task._id}>
                            <td><span className={ timeDifference(task.taskDate) > 30 || timeDifference(task.taskDate) < -30 ? 'badge badge-danger' : 'badge badge-success' }>
                            {Moment(task.taskDate).format('MMMM Do')}
                            </span></td>

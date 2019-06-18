@@ -78,11 +78,11 @@ class EditLead extends Form {
 												<div className="row">
 													<div className="col-md-8">
 														<div className="form-group">
-															<label for="inputUsername">Username</label>
+															<label htmlFor="inputUsername">Username</label>
 															<input type="text" className="form-control" id="inputUsername" placeholder="Username" />
 														</div>
 														<div className="form-group">
-															<label for="inputUsername">Biography</label>
+															<label htmlFor="inputUsername">Biography</label>
 															<textarea rows="2" className="form-control" id="inputBio" placeholder="Tell something about yourself"></textarea>
 														</div>
 													</div>
@@ -132,16 +132,15 @@ class EditLead extends Form {
 
 											<form >
 												<div className="form-group">
-													<label for="inputPasswordCurrent">Current password</label>
+													<label htmlFor="inputPasswordCurrent">Current password</label>
 													<input type="password" className="form-control" id="inputPasswordCurrent" />
-													<small><a href="#">Forgot your password?</a></small>
 												</div>
 												<div className="form-group">
-													<label for="inputPasswordNew">New password</label>
+													<label htmlFor="inputPasswordNew">New password</label>
 													<input type="password" className="form-control" id="inputPasswordNew" />
 												</div>
 												<div className="form-group">
-													<label for="inputPasswordNew2">Verify password</label>
+													<label htmlFor="inputPasswordNew2">Verify password</label>
 													<input type="password" className="form-control" id="inputPasswordNew2" />
 												</div>
 												<button type="submit" className="btn btn-primary">Save changes</button>

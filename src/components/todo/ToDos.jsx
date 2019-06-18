@@ -10,7 +10,7 @@ import { getTasks, SetTask } from '../../actions/tasks'
 
 const ToDos = ({ auth, tasks: {loading, tasks, finished}, getTasks, SetTask }) =>{
    
-    useEffect(()=>{getTasks()},[])
+    useEffect(()=>{getTasks()},[getTasks])
     
     const handleClick =(item) =>{      
         SetTask(item)           

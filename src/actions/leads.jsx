@@ -9,7 +9,7 @@ import http from '../services/httpService'
 export const createNewLead = (formData, history) => async dispatch =>{
     const apiEndPoint = apiUrl + "leads"
     try{
-        const result = await http.post(apiEndPoint,formData)
+        await http.post(apiEndPoint,formData)
         dispatch({
             type: CREATE_LEAD,
             payload: formData
@@ -100,7 +100,7 @@ export const updateLeadProfile = (formData, id,  history) => async dispatch =>{
     const apiEndPoint = apiUrl + `leads/${id}`
     
     try{
-        const response = await http.put(apiEndPoint, _.pick(formData, ['name', 'email', 'phone', 'weddingDate', 'venue']))
+         await http.put(apiEndPoint, _.pick(formData, ['name', 'email', 'phone', 'weddingDate', 'venue']))
         dispatch({
            type: CREATE_LEAD,
            payload: formData

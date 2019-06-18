@@ -10,7 +10,7 @@ const Dashboard = ({ getUserProfile, auth, userProfile :{profile, loading} }) =>
     
     useEffect(()=>{
         getUserProfile()
-    }, [])
+    }, [getUserProfile])
 
     
     return (

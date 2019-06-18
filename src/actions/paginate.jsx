@@ -1,4 +1,4 @@
-import { PAGINATE, SORT_BY } from './types'
+import { PAGINATE } from './types'
 import { pageSize } from '../config.json'
 import _ from 'lodash'
 
