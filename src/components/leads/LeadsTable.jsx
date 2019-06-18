@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Moment from 'moment'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { sortData } from '../../../actions/paginate'
+import { sortData } from '../../actions/paginate'
 
 const LeadsTable = ({leads: {lead}, paginate: {data,sort}, sortData}) =>{
       return(

@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import Spinner from '../../commons/spinner'
-import { getLeads } from '../../../actions/leads'
-import Pagination from '../../commons/pagination'
+import Spinner from '../commons/spinner'
+import { getLeads } from '../../actions/leads'
+import Pagination from '../commons/pagination'
 import LeadsTable from './LeadsTable'
-import LeadSticker from '../leadSticker';
+import LeadSticker from './leadSticker';
 
 const Leads = ({getLeads, auth : {user}, leads: {lead, loading}, paginate}) => {
         

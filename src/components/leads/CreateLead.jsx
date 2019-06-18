@@ -4,10 +4,10 @@ import Joi from 'joi-browser'
 import { withRouter } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { createNewLead } from '../../../actions/leads'
+import { createNewLead } from '../../actions/leads'
 
-import Form from '../../commons/form'
-import SideBarMenu from '../sideBarMenu';
+import Form from '../commons/form'
+import SideBarMenu from '../layout/sideBarMenu';
 
 
 class CreateLead extends Form{

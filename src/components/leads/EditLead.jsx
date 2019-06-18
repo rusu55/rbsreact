@@ -4,10 +4,10 @@ import Joi from 'joi-browser'
 import Moment from 'moment'
 import { withRouter } from 'react-router-dom'
 import PropsTypes from 'prop-types'
-import Form from '../../commons/form'
+import Form from '../commons/form'
 
-import { getLeadProfile, updateLeadProfile } from '../../../actions/leads'
-import LeadSticker from '../leadSticker';
+import { getLeadProfile, updateLeadProfile } from '../../actions/leads'
+import LeadSticker from './leadSticker';
 
 class EditLead extends Form {
     state ={
@@ -44,7 +44,7 @@ class EditLead extends Form {
                 email: lead.email,
                 phone: lead.phone,
                 weddingDate : Moment(lead.weddingDate).format('YYYY-MM-DD'),
-                venue : lead.profile.venue
+                venue : lead.details.venue
            }
        }
        
