@@ -9,10 +9,23 @@ import Pagination from '../commons/pagination'
 import LeadsTable from './LeadsTable'
 import LeadSticker from './leadSticker';
 
-const Leads = ({getLeads, auth : {user}, leads: {lead, loading}, paginate}) => {
+const Leads = ({getLeads, auth : {user}, leads: {lead, loading, itemsCount, skip, sortBy, orderBy,  currentPage, pageSize}}) => {
         
-    useEffect(()=>{ getLeads()}, [])
+    useEffect(()=>{ getLeads(skip, currentPage, null)}, [getLeads])
     
+    const handlePageChange = (page) => {
+    const skip = pageSize*page - pageSize
+       getLeads(skip, page, null, null)
+    }
+
+    const handleSortChange = (path) =>{
+        
+        let order = ''
+        sortBy === path && orderBy === 'asc' ? order = 'desc' : order = 'asc' 
+        console.log(order)
+        console.log(sortBy)
+        getLeads(skip, currentPage, path, order)
+    }
        return(
         <Fragment>
             <main className="content">
@@ -31,11 +44,11 @@ const Leads = ({getLeads, auth : {user}, leads: {lead, loading}, paginate}) => {
                                              {loading ? <Spinner/> :
                                                 <Fragment>                
                                                     { lead.length > 0 ? (
-                                                        <LeadsTable />
+                                                        <LeadsTable leads={lead} onSortChange={handleSortChange}  />
                                                     ) : <p>No Leads</p>}       
                                                  </Fragment>
                                              }
-                                             <Pagination paginate= {paginate} leads = {lead} />
+                                             <Pagination  itemsCount={itemsCount} currentPage={currentPage} pageSize={pageSize} onPageChange={handlePageChange} />
 										</div>
                                         
 									</div>
@@ -59,7 +72,6 @@ const Leads = ({getLeads, auth : {user}, leads: {lead, loading}, paginate}) => {
 
 const mapStateToProps = state =>({
     auth : state.auth,
-    leads: state.leads,
-    paginate: state.paginate
+    leads: state.leads
    })
 export default connect(mapStateToProps, {getLeads})(Leads)

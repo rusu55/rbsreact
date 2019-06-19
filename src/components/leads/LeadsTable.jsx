@@ -1,16 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Moment from 'moment'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { sortData } from '../../actions/paginate'
 
-const LeadsTable = ({leads: {lead}, paginate: {data,sort}, sortData}) =>{
+
+const LeadsTable = ({leads, onSortChange}) =>{
+    //console.log(leads)
       return(
         <table id="datatables-basic" className="table table-striped">
         <thead>
             <tr>
-                <th>Name</th>
+                <th onClick={()=>onSortChange('name')}>Name</th>
                 <th>Email</th>
                 <th>Wedding Date</th>
                 <th>Venue</th>
@@ -18,7 +18,7 @@ const LeadsTable = ({leads: {lead}, paginate: {data,sort}, sortData}) =>{
             </tr>
         </thead>
         <tbody>
-            {data.map( item =>(
+            {leads.map( item =>(
                      <tr key={item._id}>
                            <td><Link to={`/editLead/${item._id}`}>{item.name}</Link></td>
                            <td>{item.email}</td>
@@ -37,10 +37,6 @@ const LeadsTable = ({leads: {lead}, paginate: {data,sort}, sortData}) =>{
         paginate : PropTypes.object.isRequired,
         sortData: PropTypes.func.isRequired
     }
+      
     
-    const mapStateToProps = state => ({
-        leads: state.leads,
-        paginate: state.paginate
-    })
-    
-    export default connect(mapStateToProps,{sortData})(LeadsTable)
+    export default LeadsTable

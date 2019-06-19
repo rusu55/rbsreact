@@ -1,8 +1,7 @@
 import { CREATE_LEAD, LEAD_ERROR, GET_LEADS, GET_LEAD_PROFILE } from './types'
 
-import { apiUrl } from '../config.json'
+import { apiUrl, pageSize } from '../config.json'
 import { setAlert } from '../actions/alert'
-import { paginateData } from '../actions/paginate'
 import _ from 'lodash'
 import http from '../services/httpService'
 
@@ -35,16 +34,18 @@ export const createNewLead = (formData, history) => async dispatch =>{
     }      
    }
 
-   export const getLeads = () => async dispatch =>{
-       const apiEndPoint = apiUrl + "leads"
-
+   export const getLeads = (skip, page, path, order) => async dispatch =>{
+      
+      const apiEndPoint = apiUrl + `leads?limit=${pageSize}&skip=${skip}&sortBy=${path}`
+     
        try{
         const result = await http.get(apiEndPoint)
+        const {leads, leadsCount } = result.data
            dispatch({
             type: GET_LEADS,
-            payload: result.data
+            payload: {leads, leadsCount, skip, page, path, order}
         })
-        dispatch(paginateData(result.data, 1, null))
+      
        }
        catch(ex){
         let errors = null

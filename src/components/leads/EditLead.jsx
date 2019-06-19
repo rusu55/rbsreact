@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import Joi from 'joi-browser'
+import $ from 'jquery'
 import Moment from 'moment'
 import { withRouter } from 'react-router-dom'
 import PropsTypes from 'prop-types'
@@ -123,6 +124,36 @@ class EditLead extends Form {
 
 										</div>
 									</div>
+									<div className="card">
+										<div className="card-header">
+											<h5 className="card-title mb-0">Private info</h5>
+										</div>
+										<div className="card-body">
+												<div id="smartwizard-arrows-danger" class="wizard wizard-danger mb-4">
+													<ul>
+														<li><a href="#arrows-danger-step-1">Step Title<br /><small>Step description</small></a></li>
+														<li><a href="#arrows-danger-step-2">Step Title<br /><small>Step description</small></a></li>
+														<li><a href="#arrows-danger-step-3">Step Title<br /><small>Step description</small></a></li>
+														<li><a href="#arrows-danger-step-4">Step Title<br /><small>Step description</small></a></li>
+													</ul>
+
+												<div>
+														<div id="arrows-danger-step-1" className="">
+															Step Content 1
+														</div>
+														<div id="arrows-danger-step-2" className="">
+															Step Content 2
+														</div>
+														<div id="arrows-danger-step-3" className="">
+															Step Content 3
+														</div>
+														<div id="arrows-danger-step-4" className="">
+															Step Content 4
+														</div>
+												</div>
+										     </div>
+											</div>
+									</div>
 
 								</div>
 								<div className="tab-pane fade" id="password" role="tabpanel">
@@ -157,6 +188,14 @@ class EditLead extends Form {
 
 				</div>
 			</main>
+			<script>
+			$(function() {
+				$("#smartwizard-arrows-danger").smartWizard({
+					theme: "arrows",
+					showStepURLhash: false
+				})
+			})
+			</script>
             </Fragment>
         )
         }
