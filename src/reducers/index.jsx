@@ -5,6 +5,7 @@ import userProfile from './userProfile'
 import leads from './leads'
 import vendor from './vendor'
 import task from './task'
+import toogleSideBar from './sideBar'
  
 
 export default combineReducers({
@@ -13,5 +14,6 @@ export default combineReducers({
     userProfile,
     leads,
     vendor,
-    task
+    task,
+    toogleSideBar
 })

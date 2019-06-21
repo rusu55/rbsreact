@@ -1,15 +1,20 @@
 import React , { Fragment } from 'react'
+import { findDOMNode } from 'react-dom'
+
+
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { logout } from '../actions/auth'
+import { toggleSidebar } from  '../actions/sideBarAction'
 
-const TopNavBar = ({ auth: {isAuthenticated, loading}, logout}) =>{
+const TopNavBar = ({auth: {isAuthenticated, loading}, logout, toggleSidebar}) =>{
+ 
   const authLinks = (<Fragment>
                           <nav className="navbar navbar-expand navbar-light bg-white">
-                                <a  className="sidebar-toggle d-flex mr-2">
+                                <Link  to="" onClick={()=>toggleSidebar()} className="sidebar-toggle d-flex mr-2">
                                 <i className="hamburger align-self-center"></i>
-                                </a>
+                                </Link>
                                 <form className="form-inline d-none d-sm-inline-block">
                           <input className="form-control form-control-no-border mr-sm-2" type="text" placeholder="Search projects..." aria-label="Search" />
                         </form>
@@ -37,6 +42,7 @@ const TopNavBar = ({ auth: {isAuthenticated, loading}, logout}) =>{
                   </nav>
                     </Fragment>)
       const navBarNotLoged = ( <p></p>)
+             
     return(
         <Fragment>
              <Fragment>{ isAuthenticated ? authLinks : navBarNotLoged}  </Fragment>
@@ -48,5 +54,5 @@ const mapStateToProps = state =>({
   auth: state.auth
 }) 
 
-export default  connect(mapStateToProps, { logout })(TopNavBar)
+export default  connect(mapStateToProps, { logout, toggleSidebar })(TopNavBar)
 

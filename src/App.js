@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { Provider } from 'react-redux'
 import store from './store'
 
-
 import NavBar from './components/NavBar'
 import TopNavBar from './components/TopNavBar'
 import UserLogin from './components/auth/UserLogin'
@@ -29,6 +28,8 @@ import AddVendorProfile from './components/vendors/AddVendorProfile'
 import ToDos from './components/todo/ToDos'
 
 function App() {
+ 
+  
   return (
     <Provider store = {store}>
       <BrowserRouter>
@@ -37,7 +38,7 @@ function App() {
             <div  className="wrapper"> 
               <NavBar />
               <div className="main">
-                <TopNavBar />
+                <TopNavBar/>
                 <Alert />           
                 <Switch>
                   <Route path="/login" component={UserLogin} />

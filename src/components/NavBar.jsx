@@ -4,10 +4,13 @@ import { Link, NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { logout } from '../actions/auth'
 
-const NavBar = ({ auth: {isAuthenticated, loading}, logout}) =>{
-    
+const NavBar = ({ auth: {isAuthenticated, loading}, logout, sideBar :{isOpen}}) =>{
+    console.log(isOpen)
     const authLinks = (<Fragment>
-                         <nav className="sidebar">
+                         <nav className={
+                                    "sidebar" +
+                                    (!isOpen ? " toggled" : "") 
+                                    }>
                                     <div className="sidebar-content ">
                                             <Link className="sidebar-brand" to="/">
                                                 <i className="align-middle" data-feather="box"></i>
@@ -69,6 +72,7 @@ NavBar.propTypes ={
 }
 
 const mapStateToProps = state =>({
-  auth: state.auth
+  auth: state.auth,
+  sideBar: state.toogleSideBar
 })
 export default connect(mapStateToProps, { logout })(NavBar)
